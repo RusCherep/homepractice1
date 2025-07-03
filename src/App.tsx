@@ -11,7 +11,7 @@ function App() {
 
         <OnOff />
 
-        <UnControlledAccordion title={"Accordion"} isCollapsed={true}/>
+        <UnControlledAccordion title={"Accordion"}/>
 
 
 

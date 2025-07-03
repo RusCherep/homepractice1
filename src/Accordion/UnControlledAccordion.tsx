@@ -1,6 +1,7 @@
+import {useState} from "react";
 
-const AccordionBody=()=>{
-    return(
+const AccordionBody = () => {
+    return (
         <ul>
             <li>1</li>
             <li>2</li>
@@ -9,30 +10,32 @@ const AccordionBody=()=>{
     )
 }
 type AccordionTitle = {
-    title:string
+    title: string
 }
 
-const AccordionTitle =({title}:AccordionTitle)=>{
-    return(
+const AccordionTitle = ({title}: AccordionTitle) => {
+    return (
         <h3>
             --- {title} ---
         </h3>
     )
 }
 
-type UnControlledAccordionType ={
-    title:string
-    isCollapsed:boolean
+type UnControlledAccordionType = {
+    title: string
 }
 
-export const UnControlledAccordion = (props:UnControlledAccordionType) => {
+export const UnControlledAccordion = (props: UnControlledAccordionType) => {
 
-    const collapsed = false
+    const [collapsed, setCollapsed] = useState(true)
+
 
     return (
-        <div>
+        <div onClick={() => {
+            setCollapsed(!collapsed)
+        }}>
             <AccordionTitle title={props.title}/>
-            {props.isCollapsed && <AccordionBody/>}
+            {!collapsed ? <AccordionBody/> : null}
         </div>
     )
 }
