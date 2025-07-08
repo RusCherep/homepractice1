@@ -1,24 +1,29 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import './App.css';
-// import {ButtonTemplate1} from "./components/ButtonTemplate";
-import {OnOff} from "./components/OnOff";
-import {UnControlledAccordion} from "./Accordion/UnControlledAccordion";
+import {UncontrolledOnOff} from "./components/UncontrolledOnOff";
+import {UnControlledAccordion} from "./UncontrolledAccordion/UnControlledAccordion";
+import {Accordion} from "./Accordion/Accordion";
+import {ControlledOnOff} from "./components/controlledOnOff";
+
 
 function App() {
-  return (
-    <div >
 
-        <OnOff />
+    const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
 
-        <UnControlledAccordion title={"Accordion"}/>
+    let [buttonISOn, setButtonISOn] = useState(false)
 
 
+    return (
+        <div>
+            <UncontrolledOnOff/>
 
-      {/*<ButtonTemplate1 isOn={true}/>
-      <ButtonTemplate1 isOn={false}/>*/}
-    </div>
-  );
+            <ControlledOnOff isOn={buttonISOn} setIsOn={setButtonISOn}/>
+
+            <UnControlledAccordion title={"UncontrolledAccordion"}/>
+
+            <Accordion title={"Accordion"} onClick={setAccordionCollapsed} accordionCollapsed={accordionCollapsed}/>
+        </div>
+    );
 }
 
 export default App;
